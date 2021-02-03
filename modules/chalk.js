@@ -1,3 +1,4 @@
+// HERE IS AN EXTENSION FO AN EXISITN LIBRARY
 const c = require("chalk");
 
 class Print {
@@ -15,6 +16,9 @@ class Print {
   }
   red(...t) {
     return c.red.bold(...t);
+  }
+  redBright(...t) {
+    return c.redBright.bold(...t);
   }
 }
 
