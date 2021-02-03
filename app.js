@@ -1,16 +1,37 @@
 //This is the entry point of our application
 
+const yargs = require("yargs");
+const c = require("./library/chalk");
+
 console.log("Hello World from Node");
 console.log(process.argv);
 
-if (process.argv[2] === "add") {
-  console.log("adding todos");
-} else if (process.argv[2] === "remove") {
-  console.log("removing todos");
-} else {
-  console.log("I dont understand your command");
-}
+yargs.command({
+  command: "add",
+  describe: "Add a new todo",
+  builder: {
+    todo: {
+      describe: "Todo content",
+      demandOption: true,
+      type: "string",
+    },
+    complete: {
+      describe: "Todo status",
+      demandOption: false,
+      type: "boolean",
+      default: false,
+    },
+  },
+  handler: function (argv) {
+    console.log(argv.todo, argv.complete);
+  },
+});
 
-// run tese commands in your terminal:
-// node app.js
-// node app.js add
+yargs.parse(); // run the config and print out all the message nicely in our terminal
+
+// ----------------- CHALK
+
+c.blue("Hello World");
+c.red("Hello World");
+c.green("Hello World");
+c.red("Hello World");
