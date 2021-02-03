@@ -1,7 +1,9 @@
 //This is the entry point of our application
 
 const yargs = require("yargs");
-const c = require("./library/chalk");
+
+const chalk = require("chalk");
+const c = require("./modules/chalk");
 
 console.log("Hello World from Node");
 console.log(process.argv);
@@ -23,15 +25,15 @@ yargs.command({
     },
   },
   handler: function (argv) {
-    console.log(argv.todo, argv.complete);
+    const first = c.blue("received todo");
+    const second = argv.complete ? c.green(argv.todo) : c.red(argv.todo);
+    console.log(`${first} / ${second}`);
+    console.log(
+      c.green(
+        `Received: TODO of ${argv.todo}, is it complete? ${argv.complete}`
+      )
+    );
   },
 });
 
 yargs.parse(); // run the config and print out all the message nicely in our terminal
-
-// ----------------- CHALK
-
-c.blue("Hello World");
-c.red("Hello World");
-c.green("Hello World");
-c.red("Hello World");

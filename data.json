@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "todo": "buy some cake",
+    "complete": false
+  },
+  {
+    "id": 2,
+    "todo": "finish morning lecture",
+    "complete": true
+  }
+]
