@@ -36,7 +36,7 @@ yargs.command({
   },
 });
 
-// --------- READ FILE
+// --------- WRITE FILE
 yargs.command({
   command: "testWrite",
   handler: function (argv) {
@@ -49,7 +49,7 @@ yargs.command({
   },
 });
 
-//  ----------- WRITE FILE
+//  ----------- READ FILE
 yargs.command({
   command: "list",
   handler: function (argv) {
@@ -57,12 +57,12 @@ yargs.command({
     const data = JSON.parse(file);
     const tasks = data.map((t) => {
       if (t.complete === false) {
-        return c.red(t.task);
+        return c.red(`${t.id}: - task: ${t.task} - complete: ${t.complete}`);
       } else {
-        return c.green(t.task);
+        return c.green(`${t.id}: - task: ${t.task} - complete: ${t.complete}`);
       }
     });
-    console.log(tasks.join(", "));
+    console.log(tasks.join(" | "));
     // tasks.forEach((item) => console.log(item));
   },
 });
